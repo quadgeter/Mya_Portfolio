@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - La'Mya Menifee</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #333;">La'Mya Menifee</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="graphic-designs.html" class="nav-link">Graphic Designs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#photography" class="nav-link">Photography</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link active">Resume</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Resume Section -->
+    <section class="resume-section">
+        <div class="container">
+            <div class="resume-header" id="resumeHeader">
+                <h2 class="section-title">Resume</h2>
+                <!-- <p class="section-description">Professional experience and qualifications</p> -->
+                
+                <!-- Download Button -->
+                <div class="download-container">
+                    <a href="John_Geter_Resume_2024.pdf" download="LaMya_Menifee_Resume_2024.pdf" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span>Download Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF Viewer Container (Desktop/Tablet) -->
+            <div class="pdf-container" id="pdfContainer">
+                <div class="pdf-viewer">
+                    <iframe 
+                        src="John_Geter_Resume_2024.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=FitH" 
+                        type="application/pdf"
+                        title="La'Mya Menifee Resume"
+                        class="pdf-iframe">
+                    </iframe>
+                </div>
+                
+                <!-- PDF Loading State -->
+                <div class="pdf-loading" id="pdfLoading">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p>Loading resume...</p>
+                </div>
+                
+                <!-- PDF Error State -->
+                <div class="pdf-error" id="pdfError" style="display: none;">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Unable to load PDF</h3>
+                    <p>Your browser may not support PDF viewing. Please use the download button below.</p>
+                    <a href="John_Geter_Resume_2024.pdf" download="LaMya_Menifee_Resume_2024.pdf" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span>Download Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Fallback -->
+            <div class="mobile-fallback" id="mobileFallback" style="display: none;">
+                <div class="mobile-preview">
+                    <div class="mobile-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Resume Preview</h3>
+                    <p>For the best viewing experience on mobile devices, please download the resume to view it in your preferred PDF reader.</p>
+                    <div class="mobile-download-options">
+                        <a href="John_Geter_Resume_2024.pdf" download="LaMya_Menifee_Resume_2024.pdf" class="mobile-download-btn primary">
+                            <i class="fas fa-download"></i>
+                            <span>Download PDF</span>
+                        </a>
+                        <button class="mobile-download-btn secondary" onclick="openPDFInNewTab()">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Open in Browser</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternative Download Options -->
+            <div class="download-options" id="downloadOptions">
+                <h3>Download Options</h3>
+                <div class="download-buttons">
+                    <a href="John_Geter_Resume_2024.pdf" download="LaMya_Menifee_Resume_2024.pdf" class="download-option">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF Format</span>
+                    </a>
+                    <button class="download-option" onclick="printResume()">
+                        <i class="fas fa-print"></i>
+                        <span>Print Resume</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="footer-title">Let's Connect</h3>
+                    <p>Interested in working together? Let's discuss how I can contribute to your team.</p>
+                    <div class="contact-info">
+                        <h4>Get In Touch</h4>
+                        <p>Email: lamya.menifee@example.com</p>
+                        <p>Phone: (555) 123-4567</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">LinkedIn</a>
+                            <a href="#" class="social-link">Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La'Mya Menifee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Detection and PDF Viewer Setup
+        document.addEventListener('DOMContentLoaded', function() {
+            const pdfIframe = document.querySelector('.pdf-iframe');
+            const pdfLoading = document.getElementById('pdfLoading');
+            const pdfError = document.getElementById('pdfError');
+            const pdfContainer = document.getElementById('pdfContainer');
+            const mobileFallback = document.getElementById('mobileFallback');
+            const resumeHeader = document.getElementById('resumeHeader');
+            const downloadOptions = document.getElementById('downloadOptions');
+            
+            // Mobile detection function
+            function isMobileDevice() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                       window.innerWidth <= 768 || 
+                       ('ontouchstart' in window) ||
+                       (navigator.maxTouchPoints > 0);
+            }
+            
+            // Show appropriate content based on device
+            function setupDeviceContent() {
+                if (isMobileDevice()) {
+                    // Hide PDF viewer and resume header, show mobile fallback and download options
+                    pdfContainer.style.display = 'none';
+                    resumeHeader.style.display = 'none';
+                    downloadOptions.style.display = 'block';
+                    mobileFallback.style.display = 'block';
+                } else {
+                    // Show PDF viewer, resume header, and download options, hide mobile fallback
+                    pdfContainer.style.display = 'block';
+                    resumeHeader.style.display = 'block';
+                    downloadOptions.style.display = 'block';
+                    mobileFallback.style.display = 'none';
+                    setupPDFViewer();
+                }
+            }
+            
+            // Setup PDF viewer for desktop/tablet
+            function setupPDFViewer() {
+                // Responsive PDF viewer adjustments
+                function adjustPDFViewer() {
+                    const screenWidth = window.innerWidth;
+                    const screenHeight = window.innerHeight;
+                    
+                    if (screenWidth <= 1024) {
+                        // Tablet
+                        pdfContainer.style.minHeight = '700px';
+                    } else {
+                        // Desktop
+                        pdfContainer.style.minHeight = '800px';
+                    }
+                    
+                    // Landscape orientation adjustments
+                    if (screenWidth > screenHeight && screenWidth <= 1024) {
+                        pdfContainer.style.minHeight = '600px';
+                    }
+                }
+                
+                // Initial adjustment
+                adjustPDFViewer();
+                
+                // Adjust on window resize
+                window.addEventListener('resize', adjustPDFViewer);
+                
+                // Adjust on orientation change
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(adjustPDFViewer, 100);
+                });
+                
+                // Hide loading after PDF loads
+                pdfIframe.addEventListener('load', function() {
+                    pdfLoading.style.display = 'none';
+                    adjustPDFViewer(); // Re-adjust after PDF loads
+                });
+                
+                // Show error if PDF fails to load
+                pdfIframe.addEventListener('error', function() {
+                    pdfLoading.style.display = 'none';
+                    pdfError.style.display = 'block';
+                });
+                
+                // Fallback: Hide loading after 10 seconds
+                setTimeout(() => {
+                    if (pdfLoading.style.display !== 'none') {
+                        pdfLoading.style.display = 'none';
+                        pdfError.style.display = 'block';
+                    }
+                }, 10000);
+            }
+            
+            // Initial setup
+            setupDeviceContent();
+            
+            // Re-check on window resize (in case user rotates device)
+            window.addEventListener('resize', function() {
+                setTimeout(setupDeviceContent, 100);
+            });
+        });
+        
+        // Print Resume Function
+        function printResume() {
+            const printWindow = window.open('John_Geter_Resume_2024.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            }
+        }
+        
+        // Open PDF in New Tab (for mobile)
+        function openPDFInNewTab() {
+            window.open('John_Geter_Resume_2024.pdf', '_blank');
+        }
+        
+        // Download tracking
+        document.querySelectorAll('.download-btn, .download-option').forEach(button => {
+            button.addEventListener('click', function() {
+                // Track download event (you can add analytics here)
+                console.log('Resume download initiated');
+            });
+        });
+    </script>
+</body>
+</html>
