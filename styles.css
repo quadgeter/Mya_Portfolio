@@ -125,7 +125,7 @@ body {
     position: relative;
     width: 300px;
     height: 400px;
-    border: 8px solid #FFD700;
+    border: 8px solid #e7c403;
     border-radius: 6px;
     padding: 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -978,7 +978,6 @@ body {
         position: relative;
         width: 300px;
         height: 420px;
-        border: 8px solid #FFD700;
         border-radius: 6px;
         padding: 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
