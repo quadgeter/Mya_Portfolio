@@ -139,18 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Navbar background change on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(179, 198, 167, 0.95)';
-        navbar.style.backdropFilter = 'blur(10px)';
-    } else {
-        navbar.style.background = '#B3C6A7';
-        navbar.style.backdropFilter = 'none';
-    }
-});
-
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
@@ -218,26 +206,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Lazy loading for images
-const images = document.querySelectorAll('img');
-const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-            
-            img.onload = () => {
-                img.style.opacity = '1';
-            };
-            
-            observer.unobserve(img);
-        }
-    });
-});
-
-images.forEach(img => imageObserver.observe(img));
-
 // Add typing effect to hero name
 function typeWriter(element, text, speed = 100) {
     let i = 0;
@@ -264,36 +232,36 @@ window.addEventListener('load', () => {
 });
 
 // Gallery Filter Functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const filterButtons = document.querySelectorAll('.filter-btn');
+//     const galleryItems = document.querySelectorAll('.gallery-item');
     
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
+//     filterButtons.forEach(button => {
+//         button.addEventListener('click', () => {
+//             // Remove active class from all buttons
+//             filterButtons.forEach(btn => btn.classList.remove('active'));
+//             // Add active class to clicked button
+//             button.classList.add('active');
             
-            const filterValue = button.getAttribute('data-filter');
+//             const filterValue = button.getAttribute('data-filter');
             
-            galleryItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.classList.remove('hidden');
-                    // Add animation delay for staggered effect
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 100);
-                } else {
-                    item.classList.add('hidden');
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                }
-            });
-        });
-    });
-});
+//             galleryItems.forEach(item => {
+//                 if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+//                     item.classList.remove('hidden');
+//                     // Add animation delay for staggered effect
+//                     setTimeout(() => {
+//                         item.style.opacity = '1';
+//                         item.style.transform = 'scale(1)';
+//                     }, 100);
+//                 } else {
+//                     item.classList.add('hidden');
+//                     item.style.opacity = '0';
+//                     item.style.transform = 'scale(0.8)';
+//                 }
+//             });
+//         });
+//     });
+// });
 
 // Add scroll progress indicator
 const progressBar = document.createElement('div');
